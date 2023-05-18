@@ -1,2 +1,14 @@
+14121437352_OS_204_Ind_06Fev23[1].pdf
+19121932491_OS_195_Ind_23Jan13[5].pdf
+151315512049_OS_208_Ind_09Fev23[2].pdf
+162316217957_OS_200_Ind_30Jan23[1].pdf
+171117495142_OS_210_Ind_13Fev23.pdf
+191519241828_OS_203_Ind_03Fev23.pdf
+1513153426531_OS_205_Ind_07Fev23[1].pdf
+1514151412499_OS_214_Ind_15Fev23.pdf
+1514153435511_OS_215_Ind_16Fev23[1].pdf
+1814185617838_OS_202_Ind_02Fev23[2].pdf
+1821182813451_OS_217_Ind_17Fev23[1].pdf
 
-
+# Rename these files by replacing everything before "_OS" with "SEG"
+for file in *; do mv "$file" "$(echo "$file" | sed 's/^.*_OS/SEG_OS/')"; done
