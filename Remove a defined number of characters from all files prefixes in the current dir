@@ -1,2 +1,9 @@
+# For example, to remove the first 4 characters from all files prefixes in the current directory:
 
-
+for f in *; do mv "$f" "${f:4}"; done
+
+# and to remove all characters before a defined value?
+for f in *; do mv "$f" "${f##*/}"; done
+
+# being that value _part for example
+$ for f in *; do mv "$f" "${f##*_part}"; done
