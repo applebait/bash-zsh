@@ -1,2 +1,7 @@
+# The `ls` command does not show the creation date of files. It only shows the modification time and date. However, you can use the `stat` command to display the creation time of a file.
 
-
+# To display the creation time of a file, use the following command:
+
+stat -c %w file_name
+
+# This will display the creation time of the file in the format of yyyy-mm-dd hh:mm:ss
