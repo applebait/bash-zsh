@@ -1,4 +1,6 @@
-# VIM PROCESSING
+# For xml files processed from alto database
+
+# VIM PROCESSING
 # remove all the entire blocks inside <smart>
 :g/<smart>/,/<\/smart>/d
 
