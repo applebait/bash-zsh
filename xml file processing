@@ -1,2 +1,46 @@
+# VIM PROCESSING
+# remove all the entire blocks inside <smart>
+:g/<smart>/,/<\/smart>/d
 
-
+# remove everything after "" name" for every line
+:%s/\(\" name\).*$/
+
+# remove every "<file name=", "length=", "date=" and "/>" from the entire document
+:%s/<file name=\|length=\|date=\|\/>\|<disk uuid="//g "
+
+    # remove every "<file name=" from every line
+    #:%s/<file name=/ 
+
+    # remove ""/>" from every line ending
+    #:%s/\"\/>/
+
+    # replace with ", " the word " length="
+    #:%s/ length="/, "
+
+    # replace with ", " the word "" date=""
+    #:%s/" date="/, 
+
+# remove every line containing the word "disk"
+:%s/.*disk.*\n//gc
+
+# replace all "" "" with ","
+:%s/" "/,/g
+
+# remove all """ from both begin and end of every line
+:%s/^"\|"$//g
+
+# delete the remaining unwanted lines, it should probably be only one in the end 
+
+# BASH/ZSH PROCESSING
+# split the csv file where lines containing only one cell, and name new splitted files with the word of those lines
+cat file.csv | awk -F, 'NF==1{f=$1".csv";next} {print > f}' 
+
+# remove the first line of every csv file in the current directory
+#for filename in *.csv ; do tail -n +2 "$filename" > "${filename%.csv}_temp.csv" mv "${filename%.csv}_temp.csv" "$filename" ; done
+
+# add the file name of each csv file as the first column for every csv file in the current directory, excluding the extension
+for f in *.csv; do awk -v fName="${f%.*}" '{print fName","$0}' $f > $f.processed; mv $f.processed $f; done
+
+# delete the files without ".out" in the name, the ones used to process the last step and rename the new ones removing the ".out" word, it can be done in Finder
+# join all csv file in one single csv file
+cat *.csv > master_file.csv
