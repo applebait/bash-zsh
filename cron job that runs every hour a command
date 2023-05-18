@@ -1,2 +1,12 @@
+# To create the cron job, open a terminal window and type in the following command:
 
-
+crontab -e
+
+# Then, add the following line to the cron job:
+
+0 * * * * command >> /tmp/`date +\%Y\%m\%d\%H`.txt
+
+# Example:
+0 * * * * /usr/bin/prometheus/prmclient/prmclient -m 'get|disks_status' >> /tmp/`date +\%Y\%m\%d\%H`.txt
+
+# Save and exit the file. The cron job will now run every hour and write its output to a txt file in the /tmp/ directory, naming it according to the date and hour.
